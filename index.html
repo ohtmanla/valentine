@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nouhaila 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background: white;
+    padding: 60px 45px;
+    border-radius: 35px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 90%;
+    animation: pop 1s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+    font-size: 2.8em;
+    background: linear-gradient(135deg, #667eea, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    position: relative;
+    min-height: 80px;
+}
+
+button {
+    padding: 16px 45px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: scale(1.15);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+    position: relative;
+}
+
+.counter {
+    margin-top: 15px;
+    font-style: italic;
+    color: #f5576c;
+    min-height: 24px;
+}
+
+/* Celebration */
+.celebration {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+}
+
+.celebration.show {
+    display: flex;
+    animation: pop 0.8s ease;
+}
+
+.celebration h2 {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.celebration p {
+    font-size: 1.6em;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.love-msg {
+    margin-top: 30px;
+    font-size: 1.4em;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    h1 { font-size: 2.2em; }
+    .question { font-size: 1.3em; }
+    button { padding: 14px 35px; font-size: 1.1em; }
+    .celebration h2 { font-size: 3em; }
+    .celebration p { font-size: 1.4em; padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+    <h1>💕 Nouhaila 💕</h1>
+    <p class="question">
+        Lfriza dyali 🥰<br>
+        veux-tu être ma Valentine ? 💖
+    </p>
+
+    <div class="buttons">
+        <button class="yes-btn" onclick="sayYes()">Oui 💕</button>
+        <button class="no-btn" id="noBtn" onmouseover="moveNo()">Non 😢</button>
+    </div>
+
+    <div class="counter" id="counter"></div>
+</div>
+
+<div class="celebration" id="celebration">
+    <h2>🎉 YAAAAY 🎉</h2>
+    <p>
+        Nouhaila…<br>
+        tu viens de rendre quelqu’un<br>
+        extrêmement heureux 💖
+    </p>
+
+    <p class="love-msg">
+        Lfriza dyali 🥰<br><br>
+        depuis que tu es entrée dans ma vie,<br>
+        mon cœur n’a plus jamais hésité.<br><br>
+        C’est toi aujourd’hui,<br>
+        demain,<br>
+        et tous les jours qui suivront 💍💖
+    </p>
+</div>
+
+<audio id="music" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let tries = 0;
+const messages = [
+    "Lfriza hhh essaie encore 😏",
+    "Tu sais très bien que tu veux dire oui 😌",
+    "Arrête de faire semblant 😍",
+    "Même le bouton ne te croit pas 😂",
+    "Allez Nouhaila… 💖",
+    "Le bouton commence à paniquer 😳"
+];
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px) scale(${0.9 - tries*0.05})`;
+}
+
+document.getElementById("noBtn").onclick = () => {
+    tries++;
+    document.getElementById("counter").textContent =
+        messages[tries-1] || "Le bouton Non a abandonné… comme moi face à toi 💕";
+
+    if (tries >= 6) {
+        document.getElementById("noBtn").textContent = "😳";
+    }
+    if (tries >= 7) {
+        document.getElementById("noBtn").style.display = "none";
+    }
+};
+
+function sayYes() {
+    document.getElementById("music").play();
+    document.getElementById("container").style.display = "none";
+    document.getElementById("celebration").classList.add("show");
+
+    setTimeout(() => {
+        alert("Promis… je te choisirai tous les jours ❤️");
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
