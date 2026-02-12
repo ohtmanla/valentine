@@ -159,12 +159,13 @@ button {
     <h1>💕 Nouhaila 💕</h1>
     <p class="question">
         Lfriza dyali 🥰<br>
-        veux-tu être ma Valentine ? 💖
+        tbghi tkoni hob 7yati dyal dima?(3ndak tjawbi b non 😢)
+        Do you want to be my Valentine? 💖
     </p>
 
     <div class="buttons">
-        <button class="yes-btn" onclick="sayYes()">Oui 💕</button>
-        <button class="no-btn" id="noBtn" onmouseover="moveNo()">Non 😢</button>
+        <button class="yes-btn" onclick="sayYes()">Yes 💕</button>
+        <button class="no-btn" id="noBtn" onmouseover="moveNo()">No 😢</button>
     </div>
 
     <div class="counter" id="counter"></div>
@@ -174,17 +175,16 @@ button {
     <h2>🎉 YAAAAY 🎉</h2>
     <p>
         Nouhaila…<br>
-        tu viens de rendre quelqu’un<br>
-        extrêmement heureux 💖
+        Lah lah rak farahti hbibk Ohtman💖<br>
     </p>
 
     <p class="love-msg">
         Lfriza dyali 🥰<br><br>
-        depuis que tu es entrée dans ma vie,<br>
-        mon cœur n’a plus jamais hésité.<br><br>
-        C’est toi aujourd’hui,<br>
-        demain,<br>
-        et tous les jours qui suivront 💍💖
+        mn nhar dkhlti 7yati,<br>
+        o nti mnawraha liya.<br><br>       
+        It's you today,<br>
+        tomorrow,<br>
+        and every day that follows 💍💖
     </p>
 </div>
 
@@ -195,12 +195,12 @@ button {
 <script>
 let tries = 0;
 const messages = [
-    "Lfriza hhh essaie encore 😏",
-    "Tu sais très bien que tu veux dire oui 😌",
-    "Arrête de faire semblant 😍",
-    "Même le bouton ne te croit pas 😂",
+    "Lfriza hhh 7awli mra akhra 😏",
+    "Nti 3arfa bli bagha tgoli ah 😌",
+    "baraka mn lbssala 😍",
+    "wa ghi bla mat7awli bzf, hhh hadik no rah m3aya 😂",
     "Allez Nouhaila… 💖",
-    "Le bouton commence à paniquer 😳"
+    "ha7na had No ghadi n7ydoha ga3 f khtra 😳"
 ];
 
 function moveNo() {
@@ -213,7 +213,7 @@ function moveNo() {
 document.getElementById("noBtn").onclick = () => {
     tries++;
     document.getElementById("counter").textContent =
-        messages[tries-1] || "Le bouton Non a abandonné… comme moi face à toi 💕";
+        messages[tries-1] || "had No hadi olh mankhliha ylh 💕";
 
     if (tries >= 6) {
         document.getElementById("noBtn").textContent = "😳";
@@ -229,10 +229,11 @@ function sayYes() {
     document.getElementById("celebration").classList.add("show");
 
     setTimeout(() => {
-        alert("Promis… je te choisirai tous les jours ❤️");
+        alert("Promis… knti o mazal o ghadi tb9ay dima ahssan haja trat liya f had dnya kamlha ❤️");
     }, 3000);
 }
 </script>
 
 </body>
 </html>
+
